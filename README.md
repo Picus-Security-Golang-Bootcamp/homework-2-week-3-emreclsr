@@ -1,63 +1,37 @@
-## Homework | Week 3
-`Not: Ödevi yeni bir repoya ekleyeceksiniz. Var olan reponuzda bir güncelleme olmayacak. "homework-2..." şeklinde yeni bir repo üzerinde çalışacaksınız.`
+## Go Book Store
 
+This program provides functions for events that may occur in a book store.
+Functions can be running with flags via CLI.
+If the mode flag is empty or wrong, the program return usage.
 
-Elimizde bir kitap listesi var. 
-Kitap alanları şöyle;
-```
-- Kitap ID
-- Kitap Adı
-- Sayfa Sayısı
-- Stok Sayısı
-- Fiyatı
-- Stock Kodu
-- ISBN
-- Yazar bilgisi (ID ve İsim)
-```
+*This program is an example of an exercise written in Go language.*
 
-1. Tüm kitapları listele (list)
-2. Verilen girdi hangi kitap isimlerinde geçiyorsa o kitapları listele (search)
-3. ID'ye göre kitabı yazdır
-4. IDsi verilen kitabı sil. (Silinen kitabın ID'ye göre geliyor olması gerekiyor.)
-5. IDsi verilen kitabı istenilen adet kadar satın al ve kitabın son bilgilerini ekrana yazdır.
+ - **list command**
+```
+go run main.go --mode=list
+```
+This command list all the books and id informations in the code file.
 
-Yanlış komut girildiğinde ekrana usage'ı yazdıracak. 
+ - **search command**
+```
+go run main.go --mode=search --entry=words
+```
+This command searches the given words and return book information if book name contains given words. This command is not case sensetive.
 
+ - **delete command**
+```
+go run main.go --mode=delete --entry=id
+```
+This command change delete properties of book which id is given. Command is not actually delete book. Only changes one parameter (Delete) and book becomes invisible.
 
-Concurrency ile ilgili medium yazısı yazılacak. 
+ - **getbyid command**
+```
+go run main.go --mode=getbyid --entry=id
+```
+This command show book informations with the given id.
 
-### list command
+ - **buy command**
 ```
-go run main.go list
+go run main.go --mode=buy --entry=id --quantity=quantity
 ```
-
-### search command 
-```
-go run main.go search <bookName>
-go run main.go search Lord of the Ring: The Return of the King
-```
-
-### get command
-```
-go run main.go get <bookID>
-go run main.go get 5
-```
-
-### delete command
-```
-go run main.go delete <bookID>
-go run main.go delete 5
-```
-
-### buy command
-```
-go run main.go buy <bookID> <quantity>
-go run main.go buy 5 2
-```
-
-###
-# Requirements:
-- README
-- No third party package(s)
-- Everything should be in English (Comments, Function names, File names, etc.)
-- Use structs not maps
+This command buy the given quantity for the book which id is given. Command also compare quantity and book stock.
